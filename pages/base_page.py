@@ -3,10 +3,17 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import links
 import locators.base_page_locators as locbase
-from pages.home_page import HomePage
 
 
-class BasePage(HomePage):
+class BasePage:
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    @allure.step('Переход по на домашнюю страницу')
+    def get_url(self):
+        self.driver.get(links.Links.home_page)
+
     @allure.step('Нажатие кнопки логотипа Самокат')
     def click_logo_button(self):
         self.driver.find_element(*locbase.BasePageLocators.bp_logo_button_locator).click()
@@ -37,3 +44,7 @@ class BasePage(HomePage):
 
     def wait_url_load(self, time=10):
         return WebDriverWait(self.driver, time).until_not(expected_conditions.url_to_be('about:blank'))
+
+    @allure.step('Нажатие на кнопку согласия с cookies')
+    def cookie_accept_click(self):
+        return self.driver.find_element(*locbase.BasePageLocators.bp_cookies_accept_button_locator).click()

@@ -5,10 +5,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 import links
 import locators.order_page_locators as locorder
-from pages.home_page import HomePage
+from pages.base_page import BasePage
 
 
-class OrderPage(HomePage):
+class OrderPage(BasePage):
     @allure.step('Переход на страницу оформления заказа')
     def get_url_order_page(self):
         self.driver.get(links.Links.order_page)
@@ -122,3 +122,8 @@ class OrderPage(HomePage):
 
     def wait_for_load_order_status_page(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.url_contains(links.Links.order_status_page))
+
+    def wait_for_load_first_order_form(self):
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located(
+                locorder.OrderPageLocators.op_order_form_with_characteristics_text))
