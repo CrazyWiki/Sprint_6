@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class BasePageLocators:
     bp_yandex_button_locator = [By.XPATH, ".//a[img[@src='/assets/ya.svg']]"]
     bp_logo_button_locator = [By.XPATH, "//a[img[@alt='Scooter']]"]

@@ -8,8 +8,6 @@ class HomePageLocators:
     hp_questions_text_element = [By.CLASS_NAME, 'Home_SubHeader__zwi_E']
     hp_question_test=[By.XPATH, ".//div[@id='accordion__heading-0']/parent::div"]
     hp_order_button_locator=[By.XPATH,".//div[starts-with(@class, 'Home')]/button[text()='Заказать']"]
-
-
     hp_questions = {
         1: [By.XPATH, ".//div[@id='accordion__heading-0']/parent::div"],
         2: [By.XPATH, ".//div[@id='accordion__heading-1']/parent::div"],
